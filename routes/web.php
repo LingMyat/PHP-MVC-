@@ -7,8 +7,8 @@
 //     "names"=>"./controllers/addName.php",
 // ]);
 
-$router->get("","./controllers/HomeController.php");
-$router->get('about','./controllers/AboutController.php');
-$router->get('order','./controllers/OrderController.php');
-$router->post('names','./controllers/addName.php');
-$router->post('postCreate','./controllers/createPost.php');
+// $router->get("",[PostController::class,'index']);
+$router->get("",[PostController::class,'index']);
+$router->get('about',[PostController::class,'about']);
+$router->get('order',[PostController::class,'order']);
+$router->post('postCreate',[PostController::class,'createPost']);

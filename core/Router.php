@@ -19,10 +19,15 @@ class Router{
         $this->routes['POST'][$uri] = $controller;
     }
     public function direct($uri,$method){
-        if (array_key_exists($uri,$this->routes[$method])) {
-                    return $this->routes[$method][$uri];
-            }else{
-                    die("404 page");
+        if (!array_key_exists($uri,$this->routes[$method])) {
+                die("404 page");
             }
+            $controller = $this->routes[$method][$uri];
+            $this->callAction($controller[0],$controller[1]);
     }
+    public function callAction($class,$method){
+        $class = new $class;
+        $class->$method();
+    }
+
 }
